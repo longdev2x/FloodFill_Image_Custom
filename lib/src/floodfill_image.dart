@@ -46,6 +46,9 @@ class FloodFillImage extends StatefulWidget {
   /// Callback function that returns an [Image] from *dart:ui* when flood fill ended.
   final Function(ui.Image image)? onFloodFillEnd;
 
+  //Phần bổ sung
+  final Paint? paint;
+
   /// Flutter widget that can use paint bucket functionality on the provided image.
   const FloodFillImage(
       {Key? key,
@@ -59,7 +62,8 @@ class FloodFillImage extends StatefulWidget {
       this.alignment,
       this.loadingWidget,
       this.onFloodFillStart,
-      this.onFloodFillEnd})
+      this.onFloodFillEnd,
+      this.paint})
       : super(key: key);
 
   @override
@@ -120,6 +124,7 @@ class _FloodFillImageState extends State<FloodFillImage> {
         notifier: _repainter,
         onFloodFillStart: widget.onFloodFillStart,
         onFloodFillEnd: widget.onFloodFillEnd,
+        paintt: widget.paint, // Phần bổ sung
         onInitialize: () {
           setState(() {
             //make sure painter is properly initialize

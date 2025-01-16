@@ -22,13 +22,17 @@ class FloodFillPainter extends CustomPainter {
   Function? onInitialize;
   Function? onRepainted;
 
+  //Phần bổ sung
+  final Paint? paintt;
+
   FloodFillPainter(
       {required this.image,
       required this.fillColor,
       this.notifier,
       this.onFloodFillStart,
       this.onFloodFillEnd,
-      this.onInitialize})
+      this.onInitialize,
+      this.paintt})
       : super(repaint: notifier) {
     _initFloodFiller();
   }
@@ -133,7 +137,7 @@ class FloodFillPainter extends CustomPainter {
         image,
         Rect.fromCenter(center: Offset(w * 0.5, h * 0.5), width: w, height: h),
         canvas,
-        Paint(),
+        paintt ?? Paint(),
         BoxFit.fill);
   }
 
